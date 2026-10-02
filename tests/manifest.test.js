@@ -43,7 +43,7 @@ test("manifest declares the exact MV3 identity, version, and storage permission"
 
   assert.equal(manifest.manifest_version, 3);
   assert.equal(manifest.name, "Grok 提示词助手");
-  assert.equal(manifest.version, "1.0.0");
+  assert.equal(manifest.version, "1.0.1");
   assert.deepEqual(manifest.permissions, ["storage"]);
   assert.deepEqual(manifest.host_permissions, ["https://api.github.com/*"]);
 });

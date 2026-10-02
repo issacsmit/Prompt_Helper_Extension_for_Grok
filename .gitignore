@@ -42,5 +42,3 @@ docs/design/
 
 # Personal prompt templates stay on this machine.
 seed-prompts.js
-docs/images/prompt-helper-panel.png
-docs/images/prompt-helper-slot-wizard.png

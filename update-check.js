@@ -9,7 +9,7 @@
   const RELEASE_URL_PREFIX =
     "https://github.com/issacsmit/Prompt_Helper_Extension_for_Grok/";
   const CHECK_TIMEOUT_MS = 5000;
-  const FALLBACK_VERSION = "1.0.0";
+  const FALLBACK_VERSION = "1.0.1";
 
   function normalizeVersion(value) {
     if (typeof value !== "string") {

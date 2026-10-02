@@ -19,6 +19,8 @@ const REQUIRED_FILES = Object.freeze([
   "LICENSE",
   "docs/images/prompt-helper-logo.svg",
   "docs/images/prompt-helper-launcher.png",
+  "docs/images/prompt-helper-panel.png",
+  "docs/images/prompt-helper-slot-wizard.png",
   "DEVELOPMENT.md",
   "TEST_CHECKLIST.md",
   "tests/fixtures/grok-composer.html",
@@ -259,9 +261,9 @@ test("Chinese documentation covers product boundaries, architecture, and manual 
   }
   assert.match(readme, /Steel Mist（钢雾）/u);
   assert.match(readme, /docs\/images\/prompt-helper-logo\.svg/u);
+  assert.match(readme, /docs\/images\/prompt-helper-panel\.png/u);
+  assert.match(readme, /docs\/images\/prompt-helper-slot-wizard\.png/u);
   assert.doesNotMatch(readme, /seed-prompts\.js/u);
-  assert.doesNotMatch(readme, /prompt-helper-panel\.png/u);
-  assert.doesNotMatch(readme, /prompt-helper-slot-wizard\.png/u);
   assert.match(readme, /悬停[\s\S]*编辑[\s\S]*删除/u);
 
   const development = readRequired("DEVELOPMENT.md");

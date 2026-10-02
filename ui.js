@@ -1764,7 +1764,7 @@
       const currentVersion =
         typeof namespace.readCurrentVersion === "function"
           ? namespace.readCurrentVersion()
-          : "1.0.0";
+          : "1.0.1";
       const updateSection = createElement(this._document, "section", {
         className: "phg-update-check",
         attributes: { "aria-labelledby": "phg-update-title" },
