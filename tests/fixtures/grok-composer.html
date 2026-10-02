@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prompt Helper 本地 Grok composer fixture</title>
+    <link rel="stylesheet" href="grok-composer.css">
+    <link rel="stylesheet" href="../../content.css">
+  </head>
+  <body>
+    <header class="fixture-header">
+      <h1>Grok 提示词助手本地 fixture</h1>
+      <p id="fixture-boundary-note" class="fixture-boundary-note" role="note">
+        这里只验证合成 DOM、完全本地存储与扩展交互，不等价于真实 Grok 冒烟；发布前仍须按人工清单在 grok.com 验证。
+      </p>
+
+      <div class="fixture-controls" aria-label="fixture 控制项">
+        <button id="fixture-rebuild" type="button">模拟 SPA 重建输入框</button>
+        <button id="fixture-clear-editor" type="button">清空编辑器</button>
+        <button id="fixture-reset-storage" type="button">清空 fixture 存储</button>
+        <label>
+          主题
+          <select id="fixture-theme">
+            <option value="system">跟随系统</option>
+            <option value="light">明色（浅色）</option>
+            <option value="dark">暗色</option>
+          </select>
+        </label>
+        <label class="fixture-checkbox">
+          <input id="fixture-reduced-motion" type="checkbox">
+          模拟减少动画
+        </label>
+      </div>
+      <p id="fixture-status" class="fixture-status" role="status" aria-live="polite"></p>
+    </header>
+
+    <main class="fixture-main">
+      <section class="fixture-card" aria-labelledby="outside-title">
+        <h2 id="outside-title">Composer 外部原生控件</h2>
+        <p>助手不得把下面的编辑区或 textarea 当成 Grok 输入框。</p>
+        <div id="outside-editor" contenteditable="true" role="textbox">
+          这个编辑区不得被适配器命中。
+        </div>
+        <textarea id="outside-textarea" rows="2">这个 textarea 也不得被命中。</textarea>
+      </section>
+
+      <section class="fixture-card" aria-labelledby="composer-title">
+        <h2 id="composer-title">合成 Grok composer</h2>
+        <p>先在输入框放置光标，再操作右下角的浮动入口。发送动作会被本页拦截。</p>
+
+        <div id="spa-rebuild-container" class="fixture-chat-shell">
+          <!-- 2026-08-29 grok.com 首页与对话页均为 TipTap；容器 data-testid="chat-input"。 -->
+          <form id="live-composer" class="w-full text-base flex flex-col gap-2 items-center justify-center relative z-10 mt-0">
+            <textarea
+              class="wcDTda_fallbackTextarea"
+              aria-hidden="true"
+              tabindex="-1"
+              style="position:absolute;width:0;height:0;overflow:hidden"
+            ></textarea>
+
+            <div
+              class="fixture-attachment"
+              data-attachment-id="fixture-file"
+              contenteditable="false"
+              aria-label="附件 fixture.txt"
+              title="附件节点应在插入后保留"
+            >
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20">
+                <path d="M6 3h5l3 3v11H6z" fill="none" stroke="currentColor"></path>
+                <path d="M11 3v4h4" fill="none" stroke="currentColor"></path>
+              </svg>
+            </div>
+
+            <div data-testid="chat-input" class="relative min-h-[60px]">
+              <div
+                id="grok-prompt-editor"
+                class="tiptap ProseMirror query-bar-editor"
+                role="textbox"
+                contenteditable="true"
+                aria-label="Ask Grok anything"
+                aria-multiline="true"
+              ><p data-placeholder="Ask anything" class="is-empty is-editor-empty"><br class="ProseMirror-trailingBreak"></p></div>
+            </div>
+
+            <button id="fixture-send" type="submit" aria-label="Submit" disabled>发送</button>
+          </form>
+        </div>
+      </section>
+
+      <section data-testid="chat-composer-fallback" hidden>
+        <div role="textbox" contenteditable="true">
+          <p>第一段含 <strong>嵌套文本</strong><span data-attachment-id="inline-file" contenteditable="false"><svg aria-hidden="true"></svg><span>fixture.pdf</span></span>。</p>
+          <p>第二段用于验证块级换行边界。</p>
+        </div>
+      </section>
+
+      <form id="textarea-composer-fallback" hidden>
+        <textarea id="textarea-fallback">textarea fallback</textarea>
+      </form>
+
+      <section hidden>
+        <textarea id="landing-textarea" aria-label="Ask Grok anything" placeholder="Ask Grok anything"></textarea>
+      </section>
+
+      <template id="spa-replacement-template">
+        <div id="grok-prompt-editor" class="tiptap ProseMirror query-bar-editor" role="textbox" contenteditable="true" aria-label="Ask Grok anything" aria-multiline="true">
+          <p>重建后的短内容</p>
+          <p data-placeholder="Ask anything" class="is-empty is-editor-empty"><br class="ProseMirror-trailingBreak"></p>
+        </div>
+      </template>
+    </main>
+
+    <script src="chrome-storage-mock.js"></script>
+    <script src="../../constants.js"></script>
+    <script src="../../storage.js"></script>
+    <script src="../../prompt-engine.js"></script>
+    <script src="../../grok-editor.js"></script>
+    <script src="../../update-check.js"></script>
+    <script src="../../ui.js"></script>
+    <script src="../../content.js"></script>
+    <script src="grok-composer-fixture.js"></script>
+  </body>
+</html>

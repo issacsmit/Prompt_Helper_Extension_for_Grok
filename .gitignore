@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Test, build, and packaged outputs
+coverage/
+dist/
+build/
+*.crx
+*.zip
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.pid
+*.tmp
+*.temp
+
+# Local agent/runtime artifacts
+.agents/
+.codex/
+.superpowers/
+.understand-anything/
+.workbuddy/
+docs/superpowers/
+docs/design/
+
+# Local visual feedback used during development
+反馈/
+推广/
+
+# Personal prompt templates stay on this machine.
+seed-prompts.js
+docs/images/prompt-helper-panel.png
+docs/images/prompt-helper-slot-wizard.png

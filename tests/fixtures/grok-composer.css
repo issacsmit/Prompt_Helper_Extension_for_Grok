@@ -1,0 +1,226 @@
+:root {
+  color-scheme: light dark;
+  --fixture-bg: #f5f5f4;
+  --fixture-surface: #ffffff;
+  --fixture-text: #1c1917;
+  --fixture-muted: #57534e;
+  --fixture-border: #d6d3d1;
+  --fixture-accent: #0f766e;
+  --fixture-on-accent: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--fixture-bg);
+  color: var(--fixture-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+.fixture-header,
+.fixture-main {
+  width: min(920px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.fixture-header {
+  padding-block: 28px 18px;
+}
+
+.fixture-header h1,
+.fixture-card h2 {
+  margin: 0 0 8px;
+}
+
+.fixture-boundary-note {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid #b45309;
+  border-radius: 8px;
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.fixture-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.fixture-controls button,
+.fixture-controls select {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--fixture-border);
+  border-radius: 9px;
+  background: var(--fixture-surface);
+  color: var(--fixture-text);
+}
+
+.fixture-checkbox {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 7px;
+}
+
+.fixture-status {
+  min-height: 24px;
+  margin: 12px 0 0;
+  color: var(--fixture-muted);
+}
+
+.fixture-main {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 48px;
+}
+
+.fixture-card {
+  padding: 18px;
+  border: 1px solid var(--fixture-border);
+  border-radius: 14px;
+  background: var(--fixture-surface);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 7%);
+}
+
+.fixture-card p {
+  margin-block: 6px;
+}
+
+#outside-editor,
+#outside-textarea {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px dashed var(--fixture-border);
+  border-radius: 8px;
+}
+
+.fixture-chat-shell {
+  min-height: 260px;
+  padding: 28px 20px;
+  border-radius: 16px;
+  background: #f7f7f8;
+}
+
+#live-composer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+  max-width: 720px;
+  margin: 90px auto 0;
+  padding: 10px;
+  border: 1px solid #c7c7cc;
+  border-radius: 22px;
+  background: #ffffff;
+  color: #171717;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 10%);
+}
+
+.fixture-attachment {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #d4d4d8;
+  border-radius: 10px;
+  background: #f4f4f5;
+}
+
+#grok-prompt-editor {
+  min-height: 54px;
+  max-height: 190px;
+  padding: 9px 4px;
+  overflow: auto;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+#grok-prompt-editor p {
+  margin: 0;
+}
+
+#grok-prompt-editor p + p {
+  margin-top: 4px;
+}
+
+#fixture-send {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #111111;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#fixture-send:disabled {
+  background: #d4d4d8;
+  color: #71717a;
+  cursor: not-allowed;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html[data-fixture-theme="dark"] {
+  --fixture-bg: #171717;
+  --fixture-surface: #262626;
+  --fixture-text: #fafafa;
+  --fixture-muted: #d6d3d1;
+  --fixture-border: #525252;
+}
+
+html[data-fixture-theme="dark"] .fixture-boundary-note {
+  background: #451a03;
+  color: #fde68a;
+}
+
+html[data-fixture-theme="dark"] .fixture-chat-shell {
+  background: #212121;
+}
+
+html[data-fixture-theme="dark"] #live-composer {
+  border-color: #52525b;
+  background: #2f2f2f;
+  color: #f4f4f5;
+}
+
+html[data-fixture-reduced-motion="true"] #phg-root *,
+html[data-fixture-reduced-motion="true"] #phg-root *::before,
+html[data-fixture-reduced-motion="true"] #phg-root *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (max-width: 600px) {
+  .fixture-header,
+  .fixture-main {
+    width: min(100% - 20px, 920px);
+  }
+
+  .fixture-chat-shell {
+    padding-inline: 10px;
+  }
+
+  #live-composer {
+    margin-top: 48px;
+  }
+}
